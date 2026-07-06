@@ -4,5 +4,6 @@ __pycache__/
 .deps/
 .codex-chess-game.json
 .claude-chess-game.json
+.chess-validator-game.json
 match-log.json
 *.tmp

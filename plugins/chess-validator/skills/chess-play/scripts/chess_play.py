@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DEPS = ROOT / ".deps"
-DEFAULT_STATE = ".claude-chess-game.json"
+DEFAULT_STATE = ".chess-validator-game.json"
 
 
 def get_chess():

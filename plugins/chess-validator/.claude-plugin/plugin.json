@@ -1,0 +1,11 @@
+{
+  "name": "chess-validator",
+  "description": "Play or referee turn-by-turn chess with deterministic legal move validation.",
+  "version": "0.1.0",
+  "author": {
+    "name": "AurumnPegasus"
+  },
+  "homepage": "https://github.com/AurumnPegasus/chess-validator",
+  "repository": "https://github.com/AurumnPegasus/chess-validator",
+  "license": "MIT"
+}

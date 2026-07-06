@@ -1,0 +1,24 @@
+{
+  "name": "chess-validator",
+  "owner": {
+    "name": "AurumnPegasus"
+  },
+  "description": "Chess validation and turn-by-turn play plugins.",
+  "plugins": [
+    {
+      "name": "chess-validator",
+      "source": "./plugins/chess-validator",
+      "displayName": "Chess Validator",
+      "description": "Play or referee turn-by-turn chess with deterministic legal move validation.",
+      "version": "0.1.0",
+      "author": {
+        "name": "AurumnPegasus"
+      },
+      "homepage": "https://github.com/AurumnPegasus/chess-validator",
+      "repository": "https://github.com/AurumnPegasus/chess-validator",
+      "license": "MIT",
+      "category": "Productivity",
+      "tags": ["chess", "skills", "validation"]
+    }
+  ]
+}

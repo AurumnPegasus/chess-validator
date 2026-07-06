@@ -1,0 +1,29 @@
+{
+  "name": "chess-validator",
+  "version": "0.1.0",
+  "description": "Play or referee turn-by-turn chess with deterministic legal move validation.",
+  "author": {
+    "name": "AurumnPegasus",
+    "url": "https://github.com/AurumnPegasus"
+  },
+  "homepage": "https://github.com/AurumnPegasus/chess-validator",
+  "repository": "https://github.com/AurumnPegasus/chess-validator",
+  "license": "MIT",
+  "keywords": ["chess", "validation", "agent-skills", "codex", "claude"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Chess Validator",
+    "shortDescription": "Legal chess move referee and opponent helper",
+    "longDescription": "Play turn-by-turn chess or validate chess moves using a deterministic local referee script instead of model memory.",
+    "developerName": "AurumnPegasus",
+    "category": "Productivity",
+    "capabilities": ["Instructions", "Local scripts"],
+    "websiteURL": "https://github.com/AurumnPegasus/chess-validator",
+    "defaultPrompt": [
+      "Play chess against me as Black.",
+      "Validate this chess move.",
+      "Render the current chess board."
+    ],
+    "brandColor": "#111827"
+  }
+}
