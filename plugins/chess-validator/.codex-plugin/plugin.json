@@ -1,6 +1,6 @@
 {
   "name": "chess-validator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Play or referee turn-by-turn chess with deterministic legal move validation.",
   "author": {
     "name": "AurumnPegasus",
@@ -20,9 +20,9 @@
     "capabilities": ["Instructions", "Local scripts"],
     "websiteURL": "https://github.com/AurumnPegasus/chess-validator",
     "defaultPrompt": [
-      "Play chess against me as Black.",
-      "Validate this chess move.",
-      "Render the current chess board."
+      "Use $chess-validator:chess-play to play chess against me as Black.",
+      "Use $chess-validator:legal-moves to show legal moves.",
+      "Use $chess-validator:save-game to save this position."
     ],
     "brandColor": "#111827"
   }
