@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+.deps/
+.codex-chess-game.json
+.claude-chess-game.json
+match-log.json
+*.tmp

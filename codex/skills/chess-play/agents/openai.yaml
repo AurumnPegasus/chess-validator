@@ -1,0 +1,4 @@
+interface:
+  display_name: "Chess Play"
+  short_description: "Play legal turn-by-turn chess in Codex"
+  default_prompt: "Use $chess-play to start a legal chess game where I play White and Codex replies as Black after every legal move."
