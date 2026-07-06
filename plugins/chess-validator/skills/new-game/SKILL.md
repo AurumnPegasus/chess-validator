@@ -5,7 +5,7 @@ description: Start or reset a chess game with Chess Validator. Use when the user
 
 # New Game
 
-Use the sibling chess script at `../chess-play/scripts/chess_play.py` as the source of truth. In Codex, resolve `<this-skill-dir>` from this skill's source path before running commands; do not pass the placeholder literally. In Claude Code, `${CLAUDE_SKILL_DIR}` is this skill directory.
+Use the sibling chess script at `../chess-play/scripts/chess_play.py` as the source of truth. In Codex, resolve `<this-skill-dir>` from this skill's source path before running commands; do not pass the placeholder literally. In Claude Code, `${CLAUDE_SKILL_DIR}` is this skill directory. Use `python3` on Unix/macOS; if unavailable, use `python` or `py -3` with the same arguments.
 
 Run:
 

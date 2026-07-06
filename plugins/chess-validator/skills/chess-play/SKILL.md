@@ -21,9 +21,11 @@ Claude Code command form:
 python3 "${CLAUDE_SKILL_DIR}/scripts/chess_play.py"
 ```
 
+Use `python3` on Unix/macOS. If `python3` is unavailable, use `python` or `py -3` with the same arguments.
+
 The script stores game state in `.chess-validator-game.json` in the current working directory by default. Save slots live under `.chess-validator-saves/` by default. Use `--state <path>` or `--save-dir <path>` for parallel games. It accepts SAN (`e4`, `Nf3`, `O-O`, `Qxf7#`) and UCI (`e2e4`, `g1f3`, `e7e8q`) moves.
 
-On first run, the script installs the Python `chess` package into `scripts/.deps` if it is not already importable. This is local execution only; it does not use MCP or a server.
+On first run, the script installs the Python `chess` package into a user-writable dependency cache if it is not already importable. Set `CHESS_VALIDATOR_DEPS` to choose that cache directory explicitly. This is local execution only; it does not use MCP or a server.
 
 ## Workflow
 
@@ -80,8 +82,8 @@ python3 <skill-dir>/scripts/chess_play.py agent-move --json
 Save, load, or list saved game slots:
 
 ```bash
-python3 <skill-dir>/scripts/chess_play.py save-game default --json
-python3 <skill-dir>/scripts/chess_play.py load-game default --json
+python3 <skill-dir>/scripts/chess_play.py save-game "default" --json
+python3 <skill-dir>/scripts/chess_play.py load-game "default" --json
 python3 <skill-dir>/scripts/chess_play.py list-saves --json
 ```
 

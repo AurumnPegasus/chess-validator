@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import py_compile
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -63,6 +64,8 @@ def run_json(*args: str) -> dict:
 
 def check_script() -> None:
     py_compile.compile(str(SCRIPT), doraise=True)
+    script_deps = SCRIPT.parent / ".deps"
+    shutil.rmtree(script_deps, ignore_errors=True)
 
     with tempfile.TemporaryDirectory(prefix="chess-validator-test-") as tmp:
         tmp_path = Path(tmp)
@@ -78,6 +81,12 @@ def check_script() -> None:
         initial = call("save-game", "initial")
         require(initial["saved"] and initial["status"]["last_move"] is None, "initial save failed")
 
+        natural = call("save-game", "King's", "Gambit")
+        require(natural["saved"] and natural["name"] == "King's Gambit", "natural save name failed")
+
+        bad_save = call("save-game", "")
+        require(not bad_save["saved"] and "empty" in bad_save["reason"], "invalid save name was not structured")
+
         move = call("move", "e4", "--by", "human")
         require(move["accepted"] and move["status"]["turn"] == "black", "human e4 was not applied")
 
@@ -85,7 +94,10 @@ def check_script() -> None:
         require(saved["saved"] and saved["name"] == "after-e4", "save-game failed")
 
         listed = call("list-saves")
-        require({item["name"] for item in listed["saves"]} == {"after-e4", "initial"}, "list-saves failed")
+        require(
+            {item["name"] for item in listed["saves"]} == {"after-e4", "initial", "King's Gambit"},
+            "list-saves failed",
+        )
 
         board = call("show-board")
         require(board["last_move"]["san"] == "e4", "show-board alias failed")
@@ -107,6 +119,8 @@ def check_script() -> None:
 
         legal = call("legal")
         require(any(row["uci"] == "c7c5" for row in legal["legal_moves"]), "legal moves missing c7c5 after load")
+
+    require(not script_deps.exists(), "script-local .deps cache should not be created")
 
 
 def main() -> None:

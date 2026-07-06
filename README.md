@@ -79,6 +79,8 @@ Use persistent JSONL mode when you want to avoid repeated Python process/import 
 python3 plugins/chess-validator/skills/chess-play/scripts/chess_play.py serve
 ```
 
+Use `python3` on Unix/macOS. On Windows or hosts without `python3`, use `py -3` or `python` with the same arguments.
+
 Example input lines:
 
 ```json
@@ -90,7 +92,7 @@ Example input lines:
 {"cmd":"show-board"}
 ```
 
-On first run, if `chess` is not importable, the script installs `chess>=1.11,<2` into a local `scripts/.deps/` directory.
+On first run, if `chess` is not importable, the script installs `chess>=1.11,<2` into a user-writable cache. Set `CHESS_VALIDATOR_DEPS=/path/to/deps` to choose the dependency cache directory explicitly.
 
 ## Development
 

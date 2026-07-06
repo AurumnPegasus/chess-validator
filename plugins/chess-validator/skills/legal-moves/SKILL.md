@@ -5,7 +5,7 @@ description: List legal chess moves for the current Chess Validator position. Us
 
 # Legal Moves
 
-Use the sibling chess script at `../chess-play/scripts/chess_play.py` as the source of truth. In Codex, resolve `<this-skill-dir>` from this skill's source path before running commands; do not pass the placeholder literally. In Claude Code, `${CLAUDE_SKILL_DIR}` is this skill directory.
+Use the sibling chess script at `../chess-play/scripts/chess_play.py` as the source of truth. In Codex, resolve `<this-skill-dir>` from this skill's source path before running commands; do not pass the placeholder literally. In Claude Code, `${CLAUDE_SKILL_DIR}` is this skill directory. Use `python3` on Unix/macOS; if unavailable, use `python` or `py -3` with the same arguments.
 
 If the user supplies a square such as `e2` or `g8`, pass it with `--square`. In Claude Code, command arguments are `$ARGUMENTS`; use `$ARGUMENTS` as the optional square when it is non-empty. Otherwise list all legal moves.
 
