@@ -2,6 +2,10 @@
 
 Play or referee turn-by-turn chess in Codex and Claude Code with deterministic legal move validation. The plugin keeps a local JSON board state, accepts SAN or UCI moves, and validates with [`python-chess`](https://python-chess.readthedocs.io/). It is not a chess engine and does not use MCP.
 
+<p align="center">
+  <img src="assets/chess-validator-demo.gif" alt="Codex versus Claude chess self-play: without validation the game stops after an illegal move; with Chess Validator it reaches 24 legal plies with zero retries." width="900">
+</p>
+
 ## Prerequisite
 
 ```bash
