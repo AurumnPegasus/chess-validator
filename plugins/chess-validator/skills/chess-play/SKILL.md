@@ -7,7 +7,7 @@ description: Play against the agent or referee turn-by-turn chess directly insid
 
 Use the bundled script as the source of truth for board state and legal moves. Do not validate chess moves from memory.
 
-The script is at `scripts/chess_play.py` inside this skill directory. In Codex, resolve `<skill-dir>` from this skill's source path before running commands; do not pass the angle-bracket placeholder literally.
+The script is at `scripts/chess_play.py` inside this skill directory. It always returns JSON. In Codex, resolve `<skill-dir>` from this skill's source path before running commands; do not pass the angle-bracket placeholder literally.
 
 ```bash
 python3 <skill-dir>/scripts/chess_play.py
@@ -25,7 +25,7 @@ Use `python3` on Unix/macOS. If `python3` is unavailable, use `python` or `py -3
 
 The script stores game state in `.chess-validator-game.json` in the current working directory by default. Save slots live under `.chess-validator-saves/` by default. Use `--state <path>` or `--save-dir <path>` for parallel games. It accepts SAN (`e4`, `Nf3`, `O-O`, `Qxf7#`) and UCI (`e2e4`, `g1f3`, `e7e8q`) moves.
 
-On first run, the script installs the Python `chess` package into a user-writable dependency cache if it is not already importable. Set `CHESS_VALIDATOR_DEPS` to choose that cache directory explicitly. This is local execution only; it does not use MCP or a server.
+The Python `chess` package must already be installed in the Python visible to the agent process. This is local execution only; it does not use MCP or a server.
 
 ## Workflow
 
@@ -73,12 +73,6 @@ List legal moves:
 python3 <skill-dir>/scripts/chess_play.py legal-moves --json
 ```
 
-Let the script choose and apply a simple legal agent move:
-
-```bash
-python3 <skill-dir>/scripts/chess_play.py agent-move --json
-```
-
 Save, load, or list saved game slots:
 
 ```bash
@@ -121,7 +115,6 @@ Each input line returns one compact JSON line. Use `quit` to stop the process.
 - For display and move options, use `show-board --json` and `legal-moves --json`.
 - Do not invent moves outside the legal list. If uncertain, choose a simple legal developing move from `legal_moves`.
 - Do not send move history, rendered boards, skill files, or conversation context to the chess opponent unless the user explicitly asks for commentary. Chess is fully represented by the current FEN plus legal moves for this use case.
-- For quick low-effort agent play, run `agent-move --json`; it chooses a random legal move and is not a chess engine.
 - If the game is over, stop requesting moves and report the result from `status.outcome`.
 - Use the board in `status.board` for display. Include turn, check status, last move, and outcome when relevant.
 

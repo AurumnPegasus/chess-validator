@@ -1,7 +1,7 @@
 {
   "name": "chess-validator",
   "description": "Play or referee turn-by-turn chess with deterministic legal move validation.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "AurumnPegasus"
   },

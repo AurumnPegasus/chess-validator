@@ -6,7 +6,6 @@ from __future__ import annotations
 import json
 import py_compile
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -64,8 +63,6 @@ def run_json(*args: str) -> dict:
 
 def check_script() -> None:
     py_compile.compile(str(SCRIPT), doraise=True)
-    script_deps = SCRIPT.parent / ".deps"
-    shutil.rmtree(script_deps, ignore_errors=True)
 
     with tempfile.TemporaryDirectory(prefix="chess-validator-test-") as tmp:
         tmp_path = Path(tmp)
@@ -119,8 +116,6 @@ def check_script() -> None:
 
         legal = call("legal")
         require(any(row["uci"] == "c7c5" for row in legal["legal_moves"]), "legal moves missing c7c5 after load")
-
-    require(not script_deps.exists(), "script-local .deps cache should not be created")
 
 
 def main() -> None:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+- Make the chess CLI JSON-only.
+- Remove runtime dependency bootstrap; require `python-chess` to be installed explicitly.
+- Remove the random `agent-move` command and duplicated Claude chess-opponent agent.
+- Shrink command-style skill wrappers and fold small contributor/security notes into README.
+
 ## 0.2.1
 
 - Reorganize the chess CLI into dependency, persistence, board, command, output, and CLI sections.

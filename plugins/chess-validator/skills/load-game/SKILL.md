@@ -5,20 +5,11 @@ description: Load a named Chess Validator save slot into the current game. Use w
 
 # Load Game
 
-Use the sibling chess script at `../chess-play/scripts/chess_play.py` as the source of truth. In Codex, resolve `<this-skill-dir>` from this skill's source path before running commands; do not pass the placeholder literally. In Claude Code, `${CLAUDE_SKILL_DIR}` is this skill directory. Use `python3` on Unix/macOS; if unavailable, use `python` or `py -3` with the same arguments.
-
-Use any argument supplied after the command as the save name. In Claude Code, command arguments are `$ARGUMENTS`; use `$ARGUMENTS` as the save name when it is non-empty. Quote save names with spaces. If no name is supplied, use `default`.
-
-Run:
+Use `$ARGUMENTS` as the save name. If it is empty, omit the name so the script uses `default`.
 
 ```bash
-python3 <this-skill-dir>/../chess-play/scripts/chess_play.py load-game "<name>" --json
-```
-
-Claude Code form:
-
-```bash
-python3 "${CLAUDE_SKILL_DIR}/../chess-play/scripts/chess_play.py" load-game "<name>" --json
+python3 "${CLAUDE_SKILL_DIR}/../chess-play/scripts/chess_play.py" load-game --json
+python3 "${CLAUDE_SKILL_DIR}/../chess-play/scripts/chess_play.py" load-game "$ARGUMENTS" --json
 ```
 
 If `loaded` is false, report the reason and suggest `list-saves`. If loaded, render the board, last move, and side to move.
